@@ -9,7 +9,7 @@ const setUserInStore = (user, token, dispatch) => {
     authenticated: true,
     data: user,
   }));
-  setError('');
+  dispatch(setError(''));
 };
 
 export const login = credentials => async (dispatch) => {
