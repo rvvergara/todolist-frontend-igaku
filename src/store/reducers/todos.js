@@ -17,7 +17,7 @@ export default (state = todos, action) => {
       const { id, updates } = action;
       const todoIndex = state.findIndex(todo => todo._id === id);
       const newState = [...state];
-      newState[todoIndex] = { ...newState[todoIndex], updates };
+      newState[todoIndex] = { ...newState[todoIndex], ...updates };
       return newState;
     }
     case REMOVE_TODO:
