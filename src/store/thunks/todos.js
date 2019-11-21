@@ -1,5 +1,7 @@
 import { sendRequest } from '../../helpers/api';
-import { listTodos, createTodo, updateTodo } from '../actions/todos';
+import {
+ listTodos, createTodo, updateTodo, removeTodo,
+} from '../actions/todos';
 import { setError } from '../actions/errors';
 
 export const fetchTodos = () => async (dispatch) => {
@@ -29,5 +31,16 @@ export const uploadTodoUpdate = (id, updates) => async (dispatch) => {
     dispatch(updateTodo(id, res.data));
   } catch (e) {
     dispatch(setError('Cannot update todo'));
+  }
+};
+
+export const deleteTodoFromDb = (id) => async (dispatch) => {
+  const path = `/v1/todos/${id}`;
+
+  try {
+    await sendRequest('delete', path);
+    dispatch(removeTodo(id));
+  } catch (e) {
+    dispatch(setError('Cannot delete todo'));
   }
 };

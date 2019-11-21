@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeTodo } from '../store/actions/todos';
-import { uploadTodoUpdate } from '../store/thunks/todos';
+import { uploadTodoUpdate, deleteTodoFromDb } from '../store/thunks/todos';
 
-const Todo = ({ todo, removeTodo, uploadTodoUpdate }) => {
+const Todo = ({ todo, deleteTodoFromDb, uploadTodoUpdate }) => {
   const handleRemove = () => {
-    removeTodo(todo._id);
+    deleteTodoFromDb(todo._id);
   };
 
   const toggleTodo = () => {
@@ -32,8 +31,8 @@ const Todo = ({ todo, removeTodo, uploadTodoUpdate }) => {
 
 Todo.propTypes = {
   todo: PropTypes.instanceOf(Object).isRequired,
-  removeTodo: PropTypes.func.isRequired,
+  deleteTodoFromDb: PropTypes.func.isRequired,
   uploadTodoUpdate: PropTypes.func.isRequired,
 };
 
-export default connect(null, { removeTodo, uploadTodoUpdate })(Todo);
+export default connect(null, { deleteTodoFromDb, uploadTodoUpdate })(Todo);
