@@ -14,6 +14,6 @@ const middlewares = process.env.NODE_ENV === 'development'
     : compose(applyMiddleware(thunk));
 
 export default () => {
-  const store = createStore(rootReducer, compose(...middlewares));
+  const store = createStore(rootReducer, middlewares);
   return store;
 };
