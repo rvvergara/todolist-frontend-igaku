@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 import { createTodo } from '../store/actions/todos';
+import { setError } from '../store/actions/errors';
 
-const TodoForm = ({ createTodo }) => {
+const TodoForm = ({ createTodo, setError, error }) => {
   const [description, setDescription] = useState('');
 
   const handleChange = e => setDescription(e.target.value);
@@ -15,12 +16,18 @@ const TodoForm = ({ createTodo }) => {
       _id: uuid(),
       description,
     };
+    if (!description) {
+      setError('Description cannot be blank');
+    }
     createTodo(newTodo);
     setDescription('');
   };
 
   return (
     <form>
+      {
+        error && <div>{error}</div>
+      }
       <input
         type="text"
         value={description}
@@ -39,6 +46,12 @@ const TodoForm = ({ createTodo }) => {
 
 TodoForm.propTypes = {
   createTodo: PropTypes.func.isRequired,
+  setError: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
-export default connect(null, { createTodo })(TodoForm);
+const mapStateToProps = state => ({
+  error: state.error,
+});
+
+export default connect(mapStateToProps, { createTodo, setError })(TodoForm);
