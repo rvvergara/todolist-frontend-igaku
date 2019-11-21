@@ -1,12 +1,12 @@
 import React from 'react';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import decode from 'jwt-decode';
-import TodoList from './TodoList';
-import TodoForm from './TodoForm';
+import Dashboard from './Dashboard';
 import configureStore from '../store/configureStore';
 import { setAuthorizationToken } from '../helpers/api';
-import Login from './Login';
 import { setCurrentUser } from '../store/actions/currentUser';
+import withAuth from './hocs/withAuth';
 
 const store = configureStore();
 
@@ -30,12 +30,11 @@ if (localStorage.token) {
 
 const App = () => (
   <Provider store={store}>
-    <Login />
-    <h1>
-      TodoList of
-    </h1>
-    <TodoForm />
-    <TodoList />
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" component={withAuth(Dashboard, false)} />
+      </Switch>
+    </BrowserRouter>
   </Provider>
 );
 
