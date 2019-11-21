@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import TodoList from './TodoList';
+import TodoForm from './TodoForm';
 import configureStore from '../store/configureStore';
 import users from '../dummy-data/users';
 
@@ -13,6 +14,7 @@ const App = () => (
       {' '}
       {users[0].username}
     </h1>
+    <TodoForm />
     <TodoList user={users[0]} />
   </Provider>
 );
