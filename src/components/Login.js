@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setCurrentUser } from '../store/actions/currentUser';
-import users from '../dummy-data/users';
+import { login } from '../store/thunks/currentUser';
 
-const Login = ({ setCurrentUser }) => {
+const Login = ({ login }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setCurrentUser({
-      isAuthenticated: true,
-      data: users[0],
-    });
+    await login({ email, password });
     setEmail('');
     setPassword('');
   };
@@ -42,11 +38,11 @@ const Login = ({ setCurrentUser }) => {
 };
 
 Login.propTypes = {
-  setCurrentUser: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   error: state.error,
 });
 
-export default connect(mapStateToProps, { setCurrentUser })(Login);
+export default connect(mapStateToProps, { login })(Login);
