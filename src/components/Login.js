@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setCurrentUser } from '../store/actions/currentUser';
-import { setError } from '../store/actions/errors';
 import users from '../dummy-data/users';
 
-const Login = ({ setCurrentUser, setError, error }) => {
+const Login = ({ setCurrentUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -43,13 +42,11 @@ const Login = ({ setCurrentUser, setError, error }) => {
 };
 
 Login.propTypes = {
-  error: PropTypes.string.isRequired,
   setCurrentUser: PropTypes.func.isRequired,
-  setError: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   error: state.error,
 });
 
-export default connect(mapStateToProps, { setError, setCurrentUser })(Login);
+export default connect(mapStateToProps, { setCurrentUser })(Login);
