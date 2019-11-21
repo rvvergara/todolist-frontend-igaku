@@ -16,6 +16,7 @@ const TodoForm = ({ createTodo }) => {
       description,
     };
     createTodo(newTodo);
+    setDescription('');
   };
 
   return (
