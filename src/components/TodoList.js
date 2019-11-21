@@ -3,12 +3,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Todo from './Todo';
 
-const TodoList = ({ todos }) => todos.map((todo) => (
-  <Todo todo={todo} key={todo._id} />
+const TodoList = ({ todos }) => {
+  const todoList = todos.map((todo) => (
+    <Todo todo={todo} key={todo._id} />
   ));
 
+  return (
+    <ul>
+      { todoList }
+    </ul>
+  );
+};
+
 TodoList.propTypes = {
-  user: PropTypes.instanceOf(Object).isRequired,
+  todos: PropTypes.instanceOf(Object).isRequired,
 };
 
 const mapStateToProps = state => ({
