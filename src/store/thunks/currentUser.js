@@ -1,4 +1,3 @@
-import decode from 'jwt-decode';
 import { setCurrentUser } from '../actions/currentUser';
 import { sendRequest, setAuthorizationToken } from '../../helpers/api';
 import { setError } from '../actions/errors';
