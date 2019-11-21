@@ -12,7 +12,7 @@ Updated features:
 
 ## API Connection
 
-This application connects to a backend [NodeJS API](https://github.com/todolist-api-igaku).
+This application connects to a backend [NodeJS API](https://github.com/rvvergara/todolist-api-igaku).
 
 ## Table of Contents
 
