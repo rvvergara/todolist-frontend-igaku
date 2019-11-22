@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import validator from 'validator';
@@ -14,12 +14,6 @@ const SignUp = ({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-
-  const cleanUpError = () => setError('');
-
-  useEffect(() => () => {
-      cleanUpError();
-    }, []);
 
   const validateInputs = ({ email, password, username }) => {
     if (!validator.isEmail(email)) {
