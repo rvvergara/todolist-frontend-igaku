@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { login } from '../store/thunks/currentUser';
 
 const Login = ({ login }) => {
@@ -19,31 +20,43 @@ const Login = ({ login }) => {
   const changePassword = e => setPassword(e.target.value);
 
   return (
-    <form className="login-form">
-      <div className="form-group">
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={changeEmail}
-        />
+    <div className="box-layout">
+      <div className="box-layout__box">
+        <h1 className="box-layout__title">
+          Todolist Igaku
+        </h1>
+        <form className="login-form">
+          <div className="form-group">
+            <input
+              type="email"
+              className="login-input"
+              placeholder="Email"
+              value={email}
+              onChange={changeEmail}
+            />
+            <input
+              type="password"
+              className="login-input"
+              placeholder="password"
+              value={password}
+              onChange={changePassword}
+            />
+          </div>
+          <div className="form-group">
+            <button
+              className="button login-button"
+              type="submit"
+              onClick={handleLogin}
+            >
+              Login
+            </button>
+          </div>
+          <Link to="/signup" className="button signup-button">
+            Signup
+          </Link>
+        </form>
       </div>
-      <div className="form-group">
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={changePassword}
-        />
-      </div>
-      <button
-        className="button login-button"
-        type="submit"
-        onClick={handleLogin}
-      >
-        Login
-      </button>
-    </form>
+    </div>
 );
 };
 
