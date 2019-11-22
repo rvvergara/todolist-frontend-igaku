@@ -11,12 +11,12 @@ const Dashboard = ({ currentUser }) => (
     <div className="container">
       <div className="widget">
         <div className="widget-header">
-          <h3 className="widget-header__title">
-Hello
+          <h2 className="widget-header__title">
+            Hello
             {' '}
             {currentUser.data.username}
-! Here are your todos
-          </h3>
+            ! Here are your todos
+          </h2>
         </div>
         <TodoForm />
         <TodoList />
