@@ -25,7 +25,6 @@ export const login = credentials => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   const path = '/v1/sessions';
-
   try {
     await sendRequest('delete', path);
     localStorage.clear();
@@ -35,7 +34,7 @@ export const logout = () => async (dispatch) => {
       data: null,
     }));
   } catch (e) {
-    dispatch(setError('Something went wrong'));
+    dispatch(setError('Something went wrong. You may have already been logged out'));
   }
 };
 

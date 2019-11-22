@@ -1,10 +1,18 @@
-import { sendRequest } from '../../helpers/api';
+import { sendRequest, setAuthorizationToken } from '../../helpers/api';
 import {
  listTodos, createTodo, updateTodo, removeTodo,
 } from '../actions/todos';
+
 import { setError } from '../actions/errors';
 
+const checkToken = () => {
+  if (!localStorage.token) {
+    setAuthorizationToken(false);
+  }
+};
+
 export const fetchTodos = () => async (dispatch) => {
+  checkToken();
   const path = '/v1/todos';
   try {
     const res = await sendRequest('get', path);
@@ -15,6 +23,7 @@ export const fetchTodos = () => async (dispatch) => {
 };
 
 export const uploadTodo = todo => async (dispatch) => {
+  checkToken();
   const path = '/v1/todos';
   try {
     const res = await sendRequest('post', path, todo);
@@ -25,6 +34,7 @@ export const uploadTodo = todo => async (dispatch) => {
 };
 
 export const uploadTodoUpdate = (id, updates) => async (dispatch) => {
+  checkToken();
   const path = `/v1/todos/${id}`;
   try {
     const res = await sendRequest('put', path, updates);
@@ -35,6 +45,7 @@ export const uploadTodoUpdate = (id, updates) => async (dispatch) => {
 };
 
 export const deleteTodoFromDb = (id) => async (dispatch) => {
+  checkToken();
   const path = `/v1/todos/${id}`;
 
   try {
