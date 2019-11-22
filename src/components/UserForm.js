@@ -32,8 +32,6 @@ const UserForm = ({
       const user = signUp({ email, password, username });
       if (user) history.push('/');
     }
-    setEmail('');
-    setPassword('');
   };
 
   return (

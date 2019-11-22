@@ -20,8 +20,9 @@ export const login = credentials => async dispatch => {
     const res = await sendRequest('post', path, credentials);
     const { user, token } = await res.data;
     setUserInStore(user, token, dispatch);
+    return user;
   } catch (e) {
-    setError('Invalid credentials');
+    dispatch(setError('Invalid credentials'));
   }
 };
 
