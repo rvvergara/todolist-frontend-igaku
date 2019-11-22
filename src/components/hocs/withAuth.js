@@ -9,7 +9,7 @@ const withAuth = (Component, isPublic) => {
     if (isPublic) {
       return !authenticated ? <Component {...props} /> : <Redirect to="/" />;
     }
-    return authenticated ? <Component {...props} /> : <Login />;
+    return authenticated ? <Component {...props} /> : <Login {...props} />;
   };
 
   Authenticated.propTypes = {

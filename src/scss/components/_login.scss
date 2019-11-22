@@ -45,3 +45,14 @@
 .signup-button {
   background: $dark-blue;
 }
+
+.login-link {
+  text-decoration: none;
+  margin-left: $s-size;
+  color: $dark-blue;
+
+  &:hover {
+    text-decoration: underline;
+    font-weight: 700;
+  }
+}
