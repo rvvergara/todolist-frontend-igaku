@@ -1,0 +1,37 @@
+.big-button {
+  background-color: $dark-grey;
+  border: none;
+  border-bottom: .6rem solid darken($dark-grey, 10%);
+  color: white;
+  font-weight: bold;
+  font-size: $l-size;
+  width: 100%;
+  padding: 1.4rem;
+  margin-bottom: $m-size;
+}
+
+.widget {
+  background: $light-blue;
+  margin-bottom: $xl-size;
+  margin-top: $xl-size;
+}
+
+.widget-header {
+  background: $light-black;
+  color: $off-white;
+  padding: $m-size;
+  display: flex;
+  justify-content: space-between;
+}
+
+.widget__message {
+  color: $off-white;
+  text-align: center;
+  margin: 0;
+  padding: $l-size;
+  border-bottom: 0.2rem solid lighten($light-blue, 10%);
+}
+
+.widget-header__title {
+  margin: 0;
+}

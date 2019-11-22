@@ -1,0 +1,38 @@
+// In Todo form
+.add-todo {
+  display: flex;
+  flex-direction: column;
+  padding: $m-size;
+}
+
+.add-todo__input {
+  font-size: $m-size;
+  flex-grow: 1;
+  background: $off-white;
+  border: none;
+  border-bottom: 0.3rem solid darken($dark-blue, 10%);
+  margin: 0 0 $s-size 0;
+  color: $light-black;
+  padding: $s-size;
+}
+
+.add-todo__button {
+  background: $dark-blue;
+}
+
+.add-todo-error {
+  color: $off-white;
+  font-style: italic;
+  padding: 0 $m-size;
+  margin-top: $m-size;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .add-todo {
+    flex-direction: row;
+  }
+
+  .add-todo__input {
+    margin: 0 $s-size 0 0;
+  }
+}

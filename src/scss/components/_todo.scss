@@ -1,3 +1,19 @@
 .completed {
   text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  padding: $m-size $m-size;
+  border-bottom: 1px solid lighten($light-blue, 10%);
+}
+
+.todo-item__text {
+  color: white;
+  font-weight: 500;
+  font-size: 2rem;
+  margin: 0;
+  word-break: break-all;
 }
