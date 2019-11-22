@@ -23,6 +23,22 @@ export const login = credentials => async (dispatch) => {
   }
 };
 
+export const logout = () => async (dispatch) => {
+  const path = '/v1/sessions';
+
+  try {
+    await sendRequest('delete', path);
+    localStorage.clear();
+    setAuthorizationToken(false);
+    dispatch(setCurrentUser({
+      authenticated: false,
+      data: null,
+    }));
+  } catch (e) {
+    dispatch(setError('Something went wrong'));
+  }
+};
+
 export const validateToken = () => async (dispatch) => {
   const path = '/v1/users/me';
   if (localStorage.token) {
