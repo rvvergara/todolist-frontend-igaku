@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const sendRequest = async (method, path, data) => {
-  const result = await axios[method](path, data);
+  const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : process.env.API_URL;
+  const result = await axios[method](`${baseURL}${path}`, data);
   return result;
 };
 
