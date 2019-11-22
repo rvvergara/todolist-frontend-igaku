@@ -1,0 +1,11 @@
+{
+  "root": "build/",
+  "routes": {
+    "/**": "index.html"
+  },
+  "proxies": {
+    "/v1": {
+      "origin": "https://todolist-igaku-api.herokuapp.com/v1"
+    }
+  }
+}
