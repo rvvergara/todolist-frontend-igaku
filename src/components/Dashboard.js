@@ -3,38 +3,27 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
-import { logout } from '../store/thunks/currentUser';
+import Header from './Header';
 
-const Dashboard = ({ currentUser, logout }) => {
-  const handleLogout = () => {
-    logout();
-  };
-  return (
-    <div>
-      <div>
-        <button
-          type="button"
-          onClick={handleLogout}
-        >
-        Log Out
-        </button>
-      </div>
+const Dashboard = ({ currentUser }) => (
+  <div>
+    <Header />
+    <div className="container">
       <h1>
-        TodoList of
+          TodoList of
         {' '}
         { currentUser.data.username }
       </h1>
       <TodoForm />
       <TodoList />
     </div>
+  </div>
   );
-};
 
 Dashboard.propTypes = {
   currentUser: PropTypes.instanceOf(Object).isRequired,
-  logout: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
 });
-export default connect(mapStateToProps, { logout })(Dashboard);
+export default connect(mapStateToProps, null)(Dashboard);

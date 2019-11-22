@@ -19,20 +19,30 @@ const Login = ({ login }) => {
   const changePassword = e => setPassword(e.target.value);
 
   return (
-    <form>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={changeEmail}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={changePassword}
-      />
-      <button type="submit" onClick={handleLogin}>Login</button>
+    <form className="login-form">
+      <div className="form-group">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={changeEmail}
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={changePassword}
+        />
+      </div>
+      <button
+        className="button login-button"
+        type="submit"
+        onClick={handleLogin}
+      >
+        Login
+      </button>
     </form>
 );
 };
