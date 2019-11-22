@@ -4,9 +4,8 @@ import {
   UPDATE_TODO,
   REMOVE_TODO,
 } from '../actions/actionTypes';
-import todos from '../../dummy-data/todos';
 
-export default (state = todos, action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case LIST_TODOS:
       return action.todos;

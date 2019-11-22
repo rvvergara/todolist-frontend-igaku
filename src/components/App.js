@@ -1,23 +1,24 @@
 import React from 'react';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import TodoList from './TodoList';
-import TodoForm from './TodoForm';
+import Dashboard from './Dashboard';
+import SignUp from './SignUp';
 import configureStore from '../store/configureStore';
-import users from '../dummy-data/users';
-import Login from './Login';
+import withAuth from './hocs/withAuth';
+import { validateToken } from '../store/thunks/currentUser';
 
 const store = configureStore();
 
+store.dispatch(validateToken());
+
 const App = () => (
   <Provider store={store}>
-    <Login />
-    <h1>
-      TodoList of
-      {' '}
-      {users[0].username}
-    </h1>
-    <TodoForm />
-    <TodoList user={users[0]} />
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={withAuth(Dashboard, false)} />
+        <Route path="/signup" component={withAuth(SignUp, true)} />
+      </Switch>
+    </BrowserRouter>
   </Provider>
 );
 

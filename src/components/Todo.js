@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeTodo, updateTodo } from '../store/actions/todos';
+import { uploadTodoUpdate, deleteTodoFromDb } from '../store/thunks/todos';
 
-const Todo = ({ todo, removeTodo, updateTodo }) => {
+const Todo = ({ todo, deleteTodoFromDb, uploadTodoUpdate }) => {
   const handleRemove = () => {
-    removeTodo(todo._id);
+    deleteTodoFromDb(todo._id);
   };
 
   const toggleTodo = () => {
     const { completed } = todo;
-    updateTodo(todo._id, { completed: !completed });
+    uploadTodoUpdate(todo._id, { completed: !completed });
   };
 
   const completedClass = todo.completed ? 'completed' : '';
@@ -31,8 +31,8 @@ const Todo = ({ todo, removeTodo, updateTodo }) => {
 
 Todo.propTypes = {
   todo: PropTypes.instanceOf(Object).isRequired,
-  removeTodo: PropTypes.func.isRequired,
-  updateTodo: PropTypes.func.isRequired,
+  deleteTodoFromDb: PropTypes.func.isRequired,
+  uploadTodoUpdate: PropTypes.func.isRequired,
 };
 
-export default connect(null, { removeTodo, updateTodo })(Todo);
+export default connect(null, { deleteTodoFromDb, uploadTodoUpdate })(Todo);

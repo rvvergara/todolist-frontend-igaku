@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import uuid from 'uuid';
-import { createTodo } from '../store/actions/todos';
+import { uploadTodo } from '../store/thunks/todos';
 import { setError } from '../store/actions/errors';
 
-const TodoForm = ({ createTodo, setError, error }) => {
+const TodoForm = ({ uploadTodo, setError, error }) => {
   const [description, setDescription] = useState('');
 
   const handleChange = e => setDescription(e.target.value);
@@ -13,13 +12,12 @@ const TodoForm = ({ createTodo, setError, error }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const newTodo = {
-      _id: uuid(),
       description,
     };
     if (!description) {
       setError('Description cannot be blank');
     }
-    createTodo(newTodo);
+    uploadTodo(newTodo);
     setDescription('');
   };
 
@@ -45,7 +43,7 @@ const TodoForm = ({ createTodo, setError, error }) => {
 
 
 TodoForm.propTypes = {
-  createTodo: PropTypes.func.isRequired,
+  uploadTodo: PropTypes.func.isRequired,
   setError: PropTypes.func.isRequired,
   error: PropTypes.string.isRequired,
 };
@@ -54,4 +52,4 @@ const mapStateToProps = state => ({
   error: state.error,
 });
 
-export default connect(mapStateToProps, { createTodo, setError })(TodoForm);
+export default connect(mapStateToProps, { uploadTodo, setError })(TodoForm);
