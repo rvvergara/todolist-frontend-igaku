@@ -15,16 +15,17 @@ const Todo = ({ todo, deleteTodoFromDb, uploadTodoUpdate }) => {
 
   const completedClass = todo.completed ? 'completed' : '';
   return (
-    <li>
-      <span className={completedClass} onClick={toggleTodo}>
+    <li className="todo-item">
+      <span className={`${completedClass} todo-item__text`} onClick={toggleTodo}>
         { todo.description }
       </span>
-      <span
-        className="delete-btn"
+      <button
+        type="button"
+        className="button button--link button--delete"
         onClick={handleRemove}
       >
-        X
-      </span>
+        Remove
+      </button>
     </li>
 );
 };

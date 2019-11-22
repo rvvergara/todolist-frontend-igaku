@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: $dark-grey;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: $m-size;
+  line-height: 1.6;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.is-active {
+  font-weight: bold;
+}
+
+.container {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 $m-size;
+}
+
+.content-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 $m-size;
+}
+
+.button {
+  border: none;
+  background: $light-blue;
+  color: $off-white;
+  display: inline-block;
+  font-size: $font-size-large;
+  font-weight: 300;
+  padding: $s-size;
+  line-height: 1;
+  margin: 0.25rem;
+  text-decoration: none;
+}
+
+.button--link {
+  background: none;
+}

@@ -1,48 +1,15 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { login } from '../store/thunks/currentUser';
+import React from 'react';
+import UserForm from './UserForm';
 
-const Login = ({ login }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    login({ email, password });
-    setEmail('');
-    setPassword('');
-  };
-
-  const changeEmail = e => setEmail(e.target.value);
-
-  const changePassword = e => setPassword(e.target.value);
-
-  return (
-    <form>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={changeEmail}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={changePassword}
-      />
-      <button type="submit" onClick={handleLogin}>Login</button>
-    </form>
+const Login = (props) => (
+  <div className="box-layout">
+    <div className="box-layout__box">
+      <h1 className="box-layout__title">
+          Todolist Igaku
+      </h1>
+      <UserForm {...props} />
+    </div>
+  </div>
 );
-};
 
-Login.propTypes = {
-  login: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = state => ({
-  error: state.error,
-});
-
-export default connect(mapStateToProps, { login })(Login);
+export default Login;

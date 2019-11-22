@@ -19,25 +19,30 @@ const TodoForm = ({ uploadTodo, setError, error }) => {
     }
     uploadTodo(newTodo);
     setDescription('');
+    setError('');
   };
 
   return (
-    <form>
+    <div>
       {
-        error && <div>{error}</div>
-      }
-      <input
-        type="text"
-        value={description}
-        onChange={handleChange}
-      />
-      <button
-        type="submit"
-        onClick={handleSubmit}
-      >
-        Add Todo
-      </button>
-    </form>
+      error && <p className="add-todo-error">{error}</p>
+    }
+      <form className="add-todo">
+        <input
+          className="add-todo__input"
+          type="text"
+          value={description}
+          onChange={handleChange}
+        />
+        <button
+          className="button add-todo__button"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          Add Todo
+        </button>
+      </form>
+    </div>
   );
 };
 
