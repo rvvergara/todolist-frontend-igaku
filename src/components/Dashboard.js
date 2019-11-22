@@ -9,13 +9,18 @@ const Dashboard = ({ currentUser }) => (
   <div>
     <Header />
     <div className="container">
-      <h1>
-          TodoList of
-        {' '}
-        { currentUser.data.username }
-      </h1>
-      <TodoForm />
-      <TodoList />
+      <div className="widget">
+        <div className="widget-header">
+          <h3 className="widget-header__title">
+Hello
+            {' '}
+            {currentUser.data.username}
+! Here are your todos
+          </h3>
+        </div>
+        <TodoForm />
+        <TodoList />
+      </div>
     </div>
   </div>
   );

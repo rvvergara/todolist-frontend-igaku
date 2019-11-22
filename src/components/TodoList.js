@@ -13,9 +13,14 @@ const TodoList = ({ todos, fetchTodos }) => {
   ));
 
   return (
-    <ul>
-      { todoList }
-    </ul>
+    <>
+      {
+        todos.length === 0 && <p className="widget__message">No todos yet, add one</p>
+      }
+      <ul>
+        { todoList }
+      </ul>
+    </>
   );
 };
 

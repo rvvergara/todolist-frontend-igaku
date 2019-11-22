@@ -22,16 +22,18 @@ const TodoForm = ({ uploadTodo, setError, error }) => {
   };
 
   return (
-    <form>
+    <form className="add-todo">
       {
         error && <div>{error}</div>
       }
       <input
+        className="add-todo__input"
         type="text"
         value={description}
         onChange={handleChange}
       />
       <button
+        className="button add-todo__button"
         type="submit"
         onClick={handleSubmit}
       >
